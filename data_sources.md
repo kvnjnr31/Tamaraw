@@ -9,9 +9,9 @@
 **Resolution:** 10 meters  
 
 ### Acquisition Notes
-- Accessed via the ESA WorldCover Data Access Portal.  
-- Located and downloaded the tile covering Palawan, Philippines (e.g., `N09E117`).  
-- Used in the project to generate forest and mangrove masks and to downsample to ~100 m resolution for simulation.
+- Went to the ESA WorldCover Data Access Portal.  
+- Used the interactive map to locate the Palawan tile (`N09E117`).  
+- Downloaded the 10‑m GeoTIFF and later downsampled it to ~100 m for simulation.  
 
 ---
 
@@ -24,16 +24,71 @@
 **Resolution:** ~0.25° (~27 km)  
 **Temporal Resolution:** Hourly  
 
-### Acquisition Notes
-- Searched for “ERA5 single levels” on the CDS portal.  
-- Selected the dataset *ERA5 hourly data on single levels from 1940 to present*.  
-- Configured a geographic subset for Palawan using the bounding box:  
-  - North: 12.0  
-  - West: 117.0  
-  - South: 8.0  
-  - East: 120.0  
-- Downloaded key climate variables including temperature, dewpoint, precipitation, wind components, and surface pressure.
+### Step‑by‑Step Acquisition Breakdown
+
+#### **Step 1 — Navigate to the ERA5 Single‑Levels Page**
+Screenshot:  
+![ERA5 Overview](/mnt/data/80322c83-2601-4c7b-8b61-8e009122cd48.png)
+
+- From the Climate Data Store homepage, searched for **“ERA5 single levels”**.
+- Selected **ERA5 hourly data on single levels from 1940 to present**.
 
 ---
 
-_Last updated: 2025-12-14_
+#### **Step 2 — Open the Download Tab and Select Variables**
+Screenshot:  
+![ERA5 Variable Selection](/mnt/data/299e52d6-3c34-43a7-b18d-65a38c325f28.png)
+
+Variables selected:
+
+- **10m u-component of wind**  
+- **10m v-component of wind**  
+- **2m dewpoint temperature**  
+- **2m temperature**  
+- **Surface pressure**  
+- **Total precipitation**
+
+These are the core climate drivers for mosquito diffusion and habitat suitability modeling.
+
+---
+
+#### **Step 3 — Select Year, Months, Days, and Hours**
+
+- Year: *e.g., 2025*  
+- All months  
+- All days  
+- All 24 hourly timesteps  
+
+This provides a complete annual climate dataset at hourly resolution.
+
+---
+
+#### **Step 4 — Choose the Geographic Sub‑Region**
+
+Bounding box used:
+
+```
+North: 12
+West: 117
+South: 8
+East: 120
+```
+
+This frame isolates the Palawan region.
+
+---
+
+#### **Step 5 — Choose Output Format and Submit**
+
+- Output format: **NetCDF (.nc)**  
+- Pressed **Submit Form**  
+- File was generated under *Your Requests* and downloaded as a .zip containing the NetCDF file.
+
+---
+
+### Summary
+The ERA5 dataset was filtered to include only climate variables relevant to vector‑borne disease dynamics in Palawan. Hourly data were extracted for the entire year, clipped to the Palawan bounding box, and saved as a NetCDF file for downstream processing.
+
+---
+
+_Last updated: 2025‑12‑14_
